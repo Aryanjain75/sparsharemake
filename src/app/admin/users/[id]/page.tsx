@@ -66,6 +66,7 @@ const Single: React.FC<SingleProps> = ({ params }) => {
 
   useEffect(() => {
     getData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params.id]);
 
   if (!userData) {
