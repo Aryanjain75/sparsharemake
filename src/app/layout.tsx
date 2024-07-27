@@ -1,10 +1,5 @@
 "use client"
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Single from "@/pages/single/Single";
-import New from "@/pages/new/New";
-import Product from "@/pages/product/Product";
-import Customers from "@/pages/customers/Customers";
-import { userInputs, productInputs } from "@/formData";
+
 import "@/style/dark.css";
 import { useContext } from "react";
 import { DarkModeContext } from "@/context/darkModeContext";
