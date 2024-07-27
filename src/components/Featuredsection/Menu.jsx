@@ -83,6 +83,7 @@ export default function Productable() {
   useEffect(() => {
     fetchTags();
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
