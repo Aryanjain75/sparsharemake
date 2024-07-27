@@ -67,6 +67,7 @@ export default function VerifyEmailPage() {
     if (token) {
       verifyUserEmail();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   const images = [
