@@ -6,6 +6,7 @@ import Chart from "@/components/chart/Chart";
 import "./single.css";
 import axios from "axios";
 import List from "@/components/adminorders/order";
+import Image from "next/image";
 
 interface Data {
   _id: string;
@@ -107,7 +108,7 @@ const Single: React.FC<SingleProps> = ({ params }) => {
             <span className="editButton">Edit</span>
 
             <div className="item">
-              <img src={data.url} alt={data.Name} className="itemImg" />
+              <Image src={data.url} alt={data.Name} className="itemImg" />
               <div className="details">
                 <h1 className="itemTitle">{data.Name}</h1>
                 <div className="detailItem">
