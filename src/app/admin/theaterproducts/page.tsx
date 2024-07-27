@@ -2,7 +2,7 @@
 import React from "react";
 import Sidebar from "@/components/sidebar/Sidebar";
 import "./product.css";
-import Productable from "../../../components/theaterproductable/Productable";
+import Productable from "@/components/theaterproductable/Productable";
 import Link from 'next/link';
 
 function Product ()  {
