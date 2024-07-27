@@ -76,7 +76,7 @@ export default function Menu() {
 
     useEffect(() => {
         fetchData(currentPage, searchValue, selectedRating, selectedTags, selectedCuisine, priceRange[0], priceRange[1]);
-    }, [selectedTags, selectedRating, selectedCuisine, priceRange, currentPage]);
+    }, [selectedTags, selectedRating, selectedCuisine, priceRange, currentPage, searchValue]);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value.toLowerCase();
