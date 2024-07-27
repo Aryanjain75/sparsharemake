@@ -30,6 +30,7 @@
           "width: fit-content"
         ]
       }
-    ]
+    ],
+    "no-inline-styles": "off"
   }
 }
