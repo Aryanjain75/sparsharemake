@@ -11,6 +11,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./productable.scss";
 import Link from "next/link"; // Correct import for Link
+import Image from "next/image";
 
 export default function Productable() {
   const [data, setData] = useState([]);
@@ -81,6 +82,7 @@ export default function Productable() {
   useEffect(() => {
     fetchTags();
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -93,6 +95,7 @@ export default function Productable() {
       priceRange[0],
       priceRange[1]
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags, selectedRating, selectedCuisine, priceRange, currentPage]);
 
   const handleChange = (e) => {
@@ -327,7 +330,7 @@ export default function Productable() {
                 <TableCell className="tableCell">{row._id}</TableCell>
                 <TableCell className="tableCell">
                   <div className="cellWrapper">
-                    <img src={row.CloudanaryImageId} alt="" className="image" />
+                    <Image src={row.CloudanaryImageId} alt="" className="image" />
                     {row.FOODNAME}
                   </div>
                 </TableCell>

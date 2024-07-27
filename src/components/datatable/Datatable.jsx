@@ -6,6 +6,8 @@ import { Box, Badge } from "@chakra-ui/react";
 import axios from 'axios';
 import "./datatable.scss";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
+
 const Datatable = ({ data }) => {
   const [Data, setData] = useState([]);
   const router=useRouter(); 
@@ -57,7 +59,7 @@ const Datatable = ({ data }) => {
       renderCell: (params) => {
         return (
           <Box display="flex" alignItems="center">
-            <img
+            <Image
               className="border-2 border-black rounded-md mr-[12px]"
               style={{ width: "27px", marginRight: "12px" }}
               name={params.row.username}
