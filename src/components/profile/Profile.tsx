@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import React, { useContext, useEffect } from "react";
 import Link from "next/link"; // Correct import for Next.js Link component
 import UserAddresses from "../user/UserAddresses";
 import { UsernameContext } from '@/context/UserContext';
-
+import Image from "next/image";
 export const Profile = () => {
   const { url, username, Address, Email, loadUserData, setUsername, setAuth, setAdmin, isAuth, isAdmin } = useContext(UsernameContext);
 
@@ -26,7 +27,7 @@ export const Profile = () => {
                   <div className="w-24 rounded-full">
                     {/* Ensure the URL is correctly set */}
                     {url ? (
-                      <img src={url} alt="User Avatar" onError={(e) => e.currentTarget.style.display = 'none'} />
+                      <Image src={url} alt="User Avatar" onError={(e) => e.currentTarget.style.display = 'none'} />
                     ) : (
                       <p>No Image Available</p>
                     )}

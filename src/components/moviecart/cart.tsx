@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 
 import {CartContext} from "@/context/CartContext";
 import Link from "next/link";
-
+import Image from "next/image";
 function Cart (){
   const { addItemsToCart, deleteItemFromCart, cart } = useContext(CartContext);
 
@@ -50,7 +50,7 @@ function Cart (){
                           <figure className="flex leading-5">
                             <div>
                               <div className="block w-16 h-16 rounded border border-gray-200 overflow-hidden">
-                                <img src={cartItem.CloudanaryImageId} alt={cartItem.FOODNAME} />
+                                <Image src={cartItem.CloudanaryImageId} alt={cartItem.FOODNAME} />
                               </div>
                             </div>
                             <figcaption className="ml-3">
