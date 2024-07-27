@@ -7,7 +7,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import "./list.scss";
-
+import Image from "next/image";
 const rows = [
   {
     id: 2117383933399,
@@ -213,7 +213,7 @@ const List = () => {
                 <TableCell className="tableCell">{row.id}</TableCell>
                 <TableCell className="tableCell">
                   <div className="cellWrapper">
-                    <img src={row.img} alt="" className="image" />
+                    <Image src={row.img} alt="" className="image" />
                     {row.product}
                   </div>
                 </TableCell>
