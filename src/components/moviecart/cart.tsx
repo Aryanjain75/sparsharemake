@@ -11,8 +11,6 @@ function Cart (){
   const increaseQty = (cartItem:any) => {
     const newQty = cartItem?.quantity + 1;
     const item = { ...cartItem, quantity: newQty };
-
-
     addItemsToCart(item);
   };
 
