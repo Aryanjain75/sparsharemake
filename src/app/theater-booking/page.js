@@ -17,8 +17,9 @@ import "./productable.scss";
 import Link from "next/link"; // Correct import for Link
 import axios from "axios";
 import {useCart} from "@/context/MoviesFoodContext";
+import Image from "next/image";
 const TheaterBooking = () => {
-  const { moviedata, adddata, showdata, savedata, loaddata } = useCart();
+  const { adddata } = useCart();
   const [Data,setdata] = useState([{
     "data": [
         {
@@ -161,6 +162,7 @@ const TheaterBooking = () => {
       priceRange[0],
       priceRange[1]
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags, selectedRating, selectedCuisine, priceRange, currentPage]);
 
   const handleRatingChange = (e) => {
@@ -269,7 +271,7 @@ const TheaterBooking = () => {
     setFormData((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleRadioChange = (id,e) => {
+  const handleRadioChange = (id) => {
     setSelectedFeature(id);
     const selectedMovie = Data.find((movie) => movie._id === id);
     setFormData((prevState) => ({
@@ -625,7 +627,7 @@ const TheaterBooking = () => {
               <TableRow key={row._id}>
                 <TableCell className="tableCell">
                   <div className="cellWrapper">
-                    <img src={row.CloudanaryImageId} alt="" className="image" />
+                    <Image src={row.CloudanaryImageId} alt="" className="image" />
                     {row.FOODNAME}
                   </div>
                 </TableCell>
