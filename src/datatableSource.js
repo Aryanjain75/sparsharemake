@@ -1,3 +1,6 @@
+
+import Image from "next/image";
+
 export const userColumns = [
   { field: "id", headerName: "ID", width: 70 },
   {
@@ -7,7 +10,7 @@ export const userColumns = [
     renderCell: (params) => {
       return (
         <div className="cellWithImg">
-          <img className="cellImg" src={params.row.img} alt="avatar" />
+          <Image className="cellImg" src={params.row.img} alt="avatar" />
           {params.row.username}
         </div>
       );
