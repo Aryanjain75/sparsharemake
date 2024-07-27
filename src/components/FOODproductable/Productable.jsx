@@ -81,6 +81,7 @@ export default function Productable() {
   useEffect(() => {
     fetchTags();
     fetchData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -93,6 +94,7 @@ export default function Productable() {
       priceRange[0],
       priceRange[1]
     );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTags, selectedRating, selectedCuisine, priceRange, currentPage]);
 
   const handleChange = (e) => {

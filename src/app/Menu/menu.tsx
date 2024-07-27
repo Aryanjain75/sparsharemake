@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { ThreeDCardDemo } from "./3d-card";
 import axios from "axios";
-import Discount from "@/components/Discounts/Services";
 import { PlaceholdersAndVanishInput } from "@/components/ui/placeholders-and-vanish-input";
 
 interface MenuItem {
