@@ -43,15 +43,7 @@ export default function Menu() {
         setData(oldData);
     };
 
-    const fetchTags = async () => {
-        try {
-            const response = await axios.get("/api/tags");
-            setTags(response.data); 
-            console.log(Tags);
-        } catch (error) {
-            console.error("Error fetching tags:", error);
-        }
-    };
+
 
     const fetchData = async (page = 1, search = "", rating: number | null = null, tags: string[] = [], cuisine = "", minPrice = 0, maxPrice = 300) => {
         try {
@@ -67,6 +59,8 @@ export default function Menu() {
                     maxPrice
                 }
             });
+            const respons = await axios.get("/api/tags");
+            setTags(respons.data); 
             setData(response.data.data);
             setOldData(response.data.data);
             setTotalPages(response.data.totalPages);
@@ -77,7 +71,6 @@ export default function Menu() {
     };
 
     useEffect(() => {
-        fetchTags();
         fetchData();
     }, []);
 

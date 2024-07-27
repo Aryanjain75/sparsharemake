@@ -2,7 +2,7 @@
 import React, { useContext } from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { CartContext } from "@/context/CartContext";
-
+import Image from "next/image"
 interface Props {
   item: {
     _id: string;
@@ -45,7 +45,7 @@ export const ThreeDCardDemo: React.FC<Props> = ({ item }) => {
     <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[20rem] h-auto rounded-xl p-6 border">
         <CardItem translateZ="100" className="w-full mt-4">
-          <img
+          <Image
             src={`${item.CloudanaryImageId}`}
             style={{ width: "373px", height: "373px" }}
             className="object-cover rounded-xl group-hover/card:shadow-xl"
