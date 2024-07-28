@@ -1,12 +1,12 @@
 "use client";
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Image from "next/image";
 import emblaCarousel from "embla-carousel";
 import Autoplay from "embla-carousel-autoplay";
 import image1 from "../utils/birthdayhall.png";
 import { FlipWords } from "./flip-words";
-import { Button } from "./moving-borders";
 import Link from "next/link";
+
 const Hero = () => {
   const emblaRef = useRef(null);
   const autoplay = useRef(
@@ -36,8 +36,8 @@ const Hero = () => {
   }, [words.length]);
 
   return (
-    <div className="w-full h-[100vh]">
-      <div className="embla w-full h-screen overflow-hidden z-1 absolute" ref={emblaRef}>
+    <div className="w-full h-screen relative">
+      <div className="embla w-full h-screen overflow-hidden absolute z-1" ref={emblaRef}>
         <div className="embla__container flex">
           <div className="embla__slide relative w-full h-screen flex-shrink-0">
             <Image
@@ -65,22 +65,23 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="z-3 relative " style={{top:"33vw"}}>
-        <div className="flex flex-col mx-[5rem] flex items-center px-4 top-[6rem] gap-8">
-          <div className="lg:text-2xl md:text-[4vw] font-normal text-neutral-600 dark:text-neutral-400 gap-1">
+      <div className="relative z-3 top-[calc(100vh-65%)] sm:top-[calc(100vh-30%)] md:top-[calc(100vh-65%)] lg:top-[calc(100vh-60%)]">
+        <div className="flex flex-col items-center px-4 gap-8 mx-[1rem] md:mx-[5rem]">
+          <div className="text-neutral-600 dark:text-neutral-400 gap-1 text-center">
             <FlipWords words={words} />
             <FlipWords words={words1} />
             <FlipWords words={words2} />
             <FlipWords words={words3} />
             <br />
           </div>
-          <div className="lg:text-7xl md:text-3xl text-[#ff4e00fa] font-extrabold">Cafe Sparsha in House!</div>
-          <div className=" sm:flex flex-col md:w-[80vw] sm:w-[80vw]">
-          <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/birthdayhallbooking">Birthday Hall Booking</Link>
-          <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/resturent">Resturent Seat Booking</Link>
-          <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/theater-booking">Private theater booking</Link>
+          <div className="text-[#ff4e00fa] font-extrabold text-center">
+            <span className="text-3xl md:text-7xl">Cafe Sparsha in House!</span>
           </div>
-
+          <div className="flex flex-col items-center w-full md:flex-row sm:w-[80vw] justify-center">
+            <Link className="w-auto m-2 border-[#ff4e00fa] p-2 text-lg sm:p-3 sm:text-xl md:p-4 md:text-2xl border-2 rounded-full text-white hover:bg-[#ff4e00fa]" href="/birthdayhallbooking">Birthday Hall Booking</Link>
+            <Link className="w-auto m-2 border-[#ff4e00fa] p-2 text-lg sm:p-3 sm:text-xl md:p-4 md:text-2xl border-2 rounded-full text-white hover:bg-[#ff4e00fa]" href="/resturent">Restaurant Seat Booking</Link>
+            <Link className="w-auto m-2 border-[#ff4e00fa] p-2 text-lg sm:p-3 sm:text-xl md:p-4 md:text-2xl border-2 rounded-full text-white hover:bg-[#ff4e00fa]" href="/theater-booking">Private Theater Booking</Link>
+          </div>
         </div>
       </div>
     </div>
