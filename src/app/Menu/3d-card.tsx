@@ -45,12 +45,15 @@ export const ThreeDCardDemo: React.FC<Props> = ({ item }) => {
     <CardContainer className="inter-var">
       <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[20rem] h-auto rounded-xl p-6 border">
         <CardItem translateZ="100" className="w-full mt-4">
-          <Image
-            src={`${item.CloudanaryImageId}`}
-            style={{ width: "373px", height: "373px" }}
-            className="object-cover rounded-xl group-hover/card:shadow-xl"
-            alt="thumbnail"
-          />
+          {
+            // eslint-disable-next-line @next/next/no-img-element
+          <img
+          src={`${item.CloudanaryImageId}`}
+          style={{ width: "373px", height: "373px" }}
+          className="object-cover rounded-xl group-hover/card:shadow-xl"
+          alt="thumbnail"
+        />
+          }
         </CardItem>
         <CardItem translateZ="50" className="text-xl font-bold text-black-600 dark:text-white">
           {item.FOODNAME}
