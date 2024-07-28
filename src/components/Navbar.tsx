@@ -53,24 +53,6 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
-  useGSAP(() => {
-    const tl = gsap.timeline();
-    tl.from(ref.current, {
-      y: -100,
-      duration: 1
-    }).from(name.current, {
-      y: -10,
-      opacity: 0,
-      duration: 0.2,
-      ease: 'circ.in'
-    }).from("span", {
-      y: -30,
-      stagger: 0.15,
-      duration: 0.5,
-      opacity: 0
-    });
-  });
-
   useEffect(() => { loadUserData(); }, []);
 
   return (

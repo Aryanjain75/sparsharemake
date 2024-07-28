@@ -35,6 +35,7 @@ export default function Page() {
         toast.error(response.data.error);
       } else {
         toast.success("Registration successful! Redirecting to login...");
+        toast.success("Before login . verify your email which sent to your registered mail id");
         setTimeout(() => {
           router.push("/login");
         }, 2000);
