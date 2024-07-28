@@ -95,7 +95,7 @@ function Navbar() {
               </span>
             </Menu>
           </div>
-          <div ref={button} className={`lg:flex hidden items-center space-x-4 ${isOpen ? "flex" : "hidden"} lg:flex-row flex-col lg:space-y-0 space-y-8`}>
+          <div ref={button} className={`lg:flex hidden items-center space-x-4 "hidden" lg:flex-row flex-col lg:space-y-0 space-y-8`}>
             {isAuth && username && <Link href="/profile"><div className="block">{username}</div></Link>}
             {isAdmin && <Link href="/admin" className="hover:text-orange-400 transition ease-in-out duration-150">Dashboard</Link>}
             <button
