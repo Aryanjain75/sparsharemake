@@ -45,7 +45,7 @@ export async function PUT(request: NextRequest) {
       fs.writeFileSync(filePath, fileBuffer);
 
       const uploader = async (path: string) => await uploadOnCloudinary(path);
-      const avatarResponse = await uploader(filePath);
+      const avatarResponse = await uploader(String(file));
 
       if (avatarResponse) {
         image = avatarResponse.secure_url;
