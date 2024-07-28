@@ -75,7 +75,7 @@ const Hero = () => {
             <br />
           </div>
           <div className="lg:text-7xl md:text-3xl text-[#ff4e00fa] font-extrabold">Cafe Sparsha in House!</div>
-          <div className="md:flex flex-col md:w-[80vw] sm:w-[80vw]">
+          <div className=" sm:flex flex-col md:w-[80vw] sm:w-[80vw]">
           <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/birthdayhallbooking">Birthday Hall Booking</Link>
           <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/resturent">Resturent Seat Booking</Link>
           <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/theater-booking">Private theater booking</Link>
