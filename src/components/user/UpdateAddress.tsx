@@ -6,7 +6,7 @@ import Sidebar from "@/components/profile/Sidebar";
 import { countries } from "countries-list";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
-
+import Image from "next/image";
 const UpdateAddress = ({ id, address }: { id: any; address: any }) => {
   const countriesList = Object.values(countries);
   const [street, setStreet] = useState(address.street);

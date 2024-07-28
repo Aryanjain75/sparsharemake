@@ -7,19 +7,6 @@ import fs from "fs";
 import { v2 as cloudinary } from 'cloudinary';
 import user from "@/models/Registration";
 
-// Configure Multer storage
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "public/uploads/");
-  },
-  filename: function (req, file, cb) {
-    cb(null, new Date().toISOString() + "-" + file.originalname);
-  }
-});
-
-const upload = multer({ storage });
-const uploadMiddleware = promisify(upload.single('image'));
-
 // Cloudinary configuration
 cloudinary.config({ 
   cloud_name: 'devj7oonz', 
@@ -38,7 +25,6 @@ export async function PUT(request: NextRequest) {
     const file = form.get('image');
 
     let image: string | null = null;
-    console.log("data check 1: "+form);
 
     if (file && file instanceof Blob) {
 

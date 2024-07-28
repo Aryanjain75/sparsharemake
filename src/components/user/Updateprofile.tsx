@@ -34,7 +34,7 @@ const UpdateProfile = () => {
     formData.set("email", email);
     formData.set("id", userid);
     if (avatar) formData.set("image", avatar);
-
+    console.log(formData);
     setLoading(true);
     try {
       await axios.put("/api/updateprofile", formData, {
