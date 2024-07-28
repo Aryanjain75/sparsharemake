@@ -41,9 +41,7 @@ export async function PUT(request: NextRequest) {
     console.log("data check 1: "+form);
 
     if (file && file instanceof Blob) {
-      const fileBuffer = Buffer.from(await file.arrayBuffer());
-      const filePath = `public/uploads/${file.name}`;
-      fs.writeFileSync(filePath, fileBuffer);
+
 
       const uploader = async (path: string) => await uploadOnCloudinary(path);
       const avatarResponse = await uploader(String(file));
@@ -55,7 +53,6 @@ export async function PUT(request: NextRequest) {
       }
 
       // Remove the file after upload
-      fs.unlinkSync(filePath);
     }
     else{
       console.log("data incomplete"+form);
