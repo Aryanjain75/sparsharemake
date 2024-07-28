@@ -111,7 +111,7 @@ function Navbar() {
         </div>
       </div>
       {isOpen && (
-        <div className="lg:hidden w-full h-screen fixed bg-gray-900 text-white z-40 flex flex-col items-center justify-center space-y-8">
+        <div className="lg:hidden w-full h-screen fixed bg-gray-900 text-white z-40 flex flex-col items-center justify-center ">
           <Link href="/" className="text-xl" onClick={toggleMenu}>Home</Link>
           <Link href="/Menu" className="text-xl" onClick={toggleMenu}>Menu</Link>
           <Link href="/Photos" className="text-xl" onClick={toggleMenu}>Photos</Link>
