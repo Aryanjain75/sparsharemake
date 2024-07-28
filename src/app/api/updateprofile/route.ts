@@ -38,6 +38,7 @@ export async function PUT(request: NextRequest) {
     const file = form.get('image');
 
     let image: string | null = null;
+    console.log("data check 1: "+form);
 
     if (file && file instanceof Blob) {
       const fileBuffer = Buffer.from(await file.arrayBuffer());
