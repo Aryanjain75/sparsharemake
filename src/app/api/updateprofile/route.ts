@@ -56,6 +56,9 @@ export async function PUT(request: NextRequest) {
       // Remove the file after upload
       fs.unlinkSync(filePath);
     }
+    else{
+      console.log("data incomplete"+form);
+    }
 
     const data = {
       name,
