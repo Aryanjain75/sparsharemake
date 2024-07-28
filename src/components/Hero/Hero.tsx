@@ -65,20 +65,20 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="z-3 relative top-[20rem]">
+      <div className="z-3 relative " style={{top:"33vw"}}>
         <div className="flex flex-col mx-[5rem] flex items-center px-4 top-[6rem] gap-8">
-          <div className="text-2xl font-normal text-neutral-600 dark:text-neutral-400 gap-1">
+          <div className="lg:text-2xl md:text-[4vw] font-normal text-neutral-600 dark:text-neutral-400 gap-1">
             <FlipWords words={words} />
             <FlipWords words={words1} />
             <FlipWords words={words2} />
             <FlipWords words={words3} />
             <br />
           </div>
-          <div className="text-7xl text-[#ff4e00fa] font-extrabold">Cafe Sparsha in House!</div>
-          <div className="">
-          <Link className="w-12 m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/birthdayhallbooking">Birthday Hall Booking</Link>
-          <Link className="w-12 m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/resturent">Resturent Seat Booking</Link>
-          <Link className="w-12 m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/theater-booking">Private theater booking</Link>
+          <div className="lg:text-7xl md:text-3xl text-[#ff4e00fa] font-extrabold">Cafe Sparsha in House!</div>
+          <div className="md:flex flex-col md:w-[80vw] sm:w-[80vw]">
+          <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/birthdayhallbooking">Birthday Hall Booking</Link>
+          <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/resturent">Resturent Seat Booking</Link>
+          <Link className="w-12 md:w-auto sm:w-[auto] m-2 border-[#ff4e00fa] p-4  text-xl  border-2  rounded-full text-white hover:bg-[#ff4e00fa]" href="/theater-booking">Private theater booking</Link>
           </div>
 
         </div>
