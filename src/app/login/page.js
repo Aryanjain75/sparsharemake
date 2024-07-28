@@ -141,8 +141,10 @@ export default function Page() {
           }}
           className="z-50 flex flex-col justify-center items-center"
         >
-          <div className="border-2 border-white w-[46rem] mx-auto p-[2rem] gap-16 flex flex-col backdrop:blur-md text-[white] bg-[#80808042]">
-            <h1>Login</h1>
+          <div className="border-2 border-white w-[46rem] mx-auto p-[2rem] gap-16 flex flex-col backdrop:blur-md text-[white] bg-[#80808042]"
+          style={{width:"46rem"}}
+          >
+            <h1 style={{fontWeight:"900",fontSize:"xxx-large"}}>Login</h1>
             <form onSubmit={onSubmit} className="text-lg flex flex-col">
               <label htmlFor="Email" className="justify-start flex">
                 Email:
@@ -165,6 +167,7 @@ export default function Page() {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className="bg-transparent border-2 p-2"
+                style={{width:"100%"}}
                 placeholder="Password"
               />
               {errors.password && (
