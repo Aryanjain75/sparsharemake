@@ -1,4 +1,5 @@
 "use client";
+
 import { motion } from "framer-motion";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -67,8 +68,8 @@ export default function Page() {
           className="z-50 flex flex-col justify-center items-center"
         >
           <motion.p className="font-bold text-xl md:text-6xl text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-400 py-4">
-            <div className="border-2 border-white w-[46rem] mt-[13rem] p-[2rem] gap-16 flex flex-col backdrop-blur-md text-[white] bg-[#80808042] rounded-lg">
-              <h1 className="text-5xl font-semibold mb-4 underline">Registration</h1>
+            <div className="border-2 border-white w-full max-w-4xl mt-16 p-6 md:p-12 gap-8 md:gap-16 flex flex-col backdrop-blur-md text-white bg-[#80808042] rounded-lg">
+              <h1 className="text-3xl md:text-5xl font-semibold mb-4 underline">Registration</h1>
               <form onSubmit={handleSubmit(onSubmit)} className="text-lg flex flex-col gap-4">
                 <div className="flex flex-col">
                   <label htmlFor="Name" className="mb-1 text-justify">Username:</label>

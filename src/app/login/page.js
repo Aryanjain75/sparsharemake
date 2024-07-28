@@ -22,7 +22,7 @@ export default function Page() {
     throw new Error("useContext must be used within a UserProvider");
   }
 
-  const { username, setUsername, signOut,loadUserData } = userContext;
+  const { setUsername, loadUserData } = userContext;
 
   const validate = () => {
     let emailError = "";
@@ -112,8 +112,7 @@ export default function Page() {
           theme: "colored",
         });
       }
-    }
-       finally {
+    } finally {
       setLoading(false);
     }
   };
@@ -128,70 +127,63 @@ export default function Page() {
     <>
       <ImagesSlider className="h-[40rem]" images={images}>
         <motion.div
-          initial={{
-            opacity: 0,
-            y: -80,
-          }}
-          animate={{
-            opacity: 1,
-            y: 0,
-          }}
-          transition={{
-            duration: 0.6,
-          }}
+          initial={{ opacity: 0, y: -80 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
           className="z-50 flex flex-col justify-center items-center"
         >
-          <div className="border-2 border-white w-[46rem] mx-auto p-[2rem] gap-16 flex flex-col backdrop:blur-md text-[white] bg-[#80808042]"
-          style={{width:"46rem"}}
-          >
-            <h1 style={{fontWeight:"900",fontSize:"xxx-large"}}>Login</h1>
-            <form onSubmit={onSubmit} className="text-lg flex flex-col">
-              <label htmlFor="Email" className="justify-start flex">
-                Email:
-              </label>
-              <input
-                type="text"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="bg-transparent border-2 p-2"
-                placeholder="Email"
-              />
-              {errors.email && (
-                <p className="text-red-500">{errors.email}</p>
-              )}
-              <label htmlFor="Password" className="justify-start flex">
-                Password:
-              </label>
-              <input
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="bg-transparent border-2 p-2"
-                style={{width:"100%"}}
-                placeholder="Password"
-              />
-              {errors.password && (
-                <p className="text-red-500">{errors.password}</p>
-              )}
+          <div className="border-2 border-white w-full max-w-2xl mx-auto p-6 md:p-12 gap-8 md:gap-16 flex flex-col backdrop-blur-md text-white bg-[#80808042]">
+            <h1 className="font-bold text-3xl md:text-5xl">Login</h1>
+            <form onSubmit={onSubmit} className="text-lg flex flex-col space-y-4">
+              <div className="flex flex-col">
+                <label htmlFor="Email" className="mb-1">
+                  Email:
+                </label>
+                <input
+                  type="text"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="bg-transparent border-2 p-2 rounded"
+                  placeholder="Email"
+                />
+                {errors.email && (
+                  <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                )}
+              </div>
+              <div className="flex flex-col">
+                <label htmlFor="Password" className="mb-1">
+                  Password:
+                </label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="bg-transparent border-2 p-2 rounded"
+                  placeholder="Password"
+                />
+                {errors.password && (
+                  <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+                )}
+              </div>
               <button
                 type="submit"
-                className="bg-red-600 my-8 p-2 rounded-2xl hover:shadow-[0_0_22px_10px_#ff0000fc]"
+                className="bg-red-600 p-2 rounded-2xl hover:shadow-[0_0_22px_10px_#ff0000fc] transition-shadow"
               >
-                  {Loading ? <span className="loading loading-bars loading-lg"></span> : "Submit"}
+                {Loading ? <span className="loading loading-bars loading-lg"></span> : "Submit"}
               </button>
-              <div className="flex justify-between">
-                <div className="text-xs">
+              <div className="flex flex-col md:flex-row justify-between text-xs text-center space-y-2 md:space-y-0 md:space-x-4">
+                <div>
                   Not Exist?{" "}
                   <Link className="text-red-800" href="/Registration">
                     Sign up
                   </Link>
                 </div>
-                <div className="text-xs">
+                <div>
                   <Link className="text-red-800" href="/verify">
                     Verify Email
                   </Link>
                 </div>
-                <div className="text-xs">
+                <div>
                   <Link className="text-red-800" href="/forgetpassword">
                     Forget Password?
                   </Link>
