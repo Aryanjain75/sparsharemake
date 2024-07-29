@@ -12,13 +12,13 @@ export default function Page() {
   const { username, isAuth, isAdmin, signOut, loadUserData, Address, Email, PhoneNumber, url } = useContext(UsernameContext);
   const [Method, setMethod] = useState("Cash On delivery");
 
-  const increaseQty = (cartItem) => {
+  const increaseQty = (cartItem:any) => {
     const newQty = cartItem?.quantity + 1;
     const item = { ...cartItem, quantity: newQty };
     addItemsToCart(item);
   };
 
-  const decreaseQty = (cartItem) => {
+  const decreaseQty = (cartItem:any) => {
     const newQty = cartItem?.quantity - 1;
     const item = { ...cartItem, quantity: newQty };
     if (newQty <= 0) return;
@@ -26,11 +26,11 @@ export default function Page() {
   };
 
   const amountWithoutTax = cart?.cartItems?.reduce(
-    (acc, item) => acc + item.quantity * item.PRICE,
+    (acc:any, item:any) => acc + item.quantity * item.PRICE,
     0
   );
   const amountWithDiscount = cart?.cartItems?.reduce(
-    (acc, item) => acc + item.quantity * item.DISCOUNTED_PRICE,
+    (acc:any, item:any) => acc + item.quantity * item.DISCOUNTED_PRICE,
     0
   );
   const taxAmount = (amountWithDiscount * 0.15).toFixed(2);
@@ -67,7 +67,7 @@ export default function Page() {
         alert("Order placed successfully!");
         clearCart();
       }
-    } catch (e) {
+    } catch (e:any) {
       if (e.status == 400) {
         alert("User not signed in");
       }
@@ -156,7 +156,7 @@ export default function Page() {
                 <span>Total Units:</span>
                 <span className="text-green-500">
                   {cart?.cartItems?.reduce(
-                    (acc, item) => acc + item.quantity,
+                    (acc:any, item:any) => acc + item.quantity,
                     0
                   )}{" "}
                   (Units)
