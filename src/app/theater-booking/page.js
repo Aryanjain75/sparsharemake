@@ -333,7 +333,7 @@ const TheaterBooking = () => {
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="relative w-full max-w-4xl mx-auto p-6 bg-background rounded-lg shadow-neon bg-transparent text-white border-2 border-white"
+        className="relative w-full max-w-4xl mx-auto p-6 overflow-x-hidden bg-background rounded-lg shadow-neon bg-transparent text-white border-2 border-white"
         style={{
           marginTop: "5rem",
           backgroundColor: "#ffffff5c",
@@ -343,6 +343,7 @@ const TheaterBooking = () => {
         <h2 className="text-3xl font-bold mb-6 text-accent font-anime text-white">
           Private Theater Booking
         </h2>
+        <div className="flex flex-row overflow-x-auto gap-2">
         {Data.map((movie) => (
           <div
             key={movie._id}
@@ -398,6 +399,7 @@ const TheaterBooking = () => {
             </div>
           </div>
         ))}
+        </div>
         <Input
           label="Date & Time"
           type="datetime-local"
