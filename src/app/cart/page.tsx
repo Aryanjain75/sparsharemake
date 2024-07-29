@@ -6,19 +6,19 @@ import { CartContext } from "@/context/CartContext";
 import Link from "next/link";
 import Cart from "@/components/cart/cart";
 import axios from "axios";
+
 export default function Page() {
-  const { addItemsToCart, deleteItemFromCart, cart ,clearCart} = useContext(CartContext);
-  console.log(Cart);
+  const { addItemsToCart, deleteItemFromCart, cart, clearCart } = useContext(CartContext);
   const { username, isAuth, isAdmin, signOut, loadUserData, Address, Email, PhoneNumber, url } = useContext(UsernameContext);
   const [Method, setMethod] = useState("Cash On delivery");
 
-  const increaseQty = (cartItem:any) => {
+  const increaseQty = (cartItem) => {
     const newQty = cartItem?.quantity + 1;
     const item = { ...cartItem, quantity: newQty };
     addItemsToCart(item);
   };
 
-  const decreaseQty = (cartItem:any) => {
+  const decreaseQty = (cartItem) => {
     const newQty = cartItem?.quantity - 1;
     const item = { ...cartItem, quantity: newQty };
     if (newQty <= 0) return;
@@ -26,11 +26,11 @@ export default function Page() {
   };
 
   const amountWithoutTax = cart?.cartItems?.reduce(
-    (acc:any, item:any) => acc + item.quantity * item.PRICE,
+    (acc, item) => acc + item.quantity * item.PRICE,
     0
   );
   const amountWithDiscount = cart?.cartItems?.reduce(
-    (acc:any, item:any) => acc + item.quantity * item.DISCOUNTED_PRICE,
+    (acc, item) => acc + item.quantity * item.DISCOUNTED_PRICE,
     0
   );
   const taxAmount = (amountWithDiscount * 0.15).toFixed(2);
@@ -65,12 +65,12 @@ export default function Page() {
       console.log(res);
       if (res.status === 202) {
         alert("Order placed successfully!");
-        // Optionally clear the cart after successful order placement
         clearCart();
       }
     } catch (e) {
-      console.log(e);
-      alert("There was an issue placing the order. Please try again.");
+      if (e.status == 400) {
+        alert("User not signed in");
+      }
     }
   };
 
@@ -83,8 +83,8 @@ export default function Page() {
           </h2>
         </div>
       </section>
-      <div className="p-5 flex">
-        <div className="w-[75vw]">
+      <div className="p-5 flex flex-col md:flex-row gap-5">
+        <div className="w-full md:w-[75vw]">
           <div className="join join-vertical w-full">
             <div className="collapse collapse-arrow join-item border-base-300 border">
               <input type="radio" name="my-accordion-4" defaultChecked />
@@ -131,7 +131,7 @@ export default function Page() {
                 {cart?.cartItems?.length > 0 && (
                   <section className="py-10">
                     <div className="container max-w-screen-xl mx-auto px-4">
-                      <div className="flex flex-col md:flex-row gap-4">
+                      <div className="flex flex-col gap-4">
                         <Cart />
                       </div>
                     </div>
@@ -141,7 +141,7 @@ export default function Page() {
             </div>
           </div>
         </div>
-        <aside className="md:w-1/4">
+        <aside className="w-full md:w-1/4">
           <article className="border border-gray-200 bg-white shadow-sm rounded mb-5 p-3 lg:p-5">
             <ul className="mb-5">
               <li className="flex justify-between text-gray-600 mb-1">
@@ -156,7 +156,7 @@ export default function Page() {
                 <span>Total Units:</span>
                 <span className="text-green-500">
                   {cart?.cartItems?.reduce(
-                    (acc:any, item:any) => acc + item.quantity,
+                    (acc, item) => acc + item.quantity,
                     0
                   )}{" "}
                   (Units)
@@ -187,4 +187,4 @@ export default function Page() {
       </div>
     </>
   );
-};
+}

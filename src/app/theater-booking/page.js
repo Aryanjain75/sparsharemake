@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
@@ -324,14 +325,16 @@ const TheaterBooking = () => {
       style={{
         backgroundImage:
           'url("https://res.cloudinary.com/devj7oonz/image/upload/v1721467461/th_izzrnh.jpg")',
+          backgroundPosition:"center",
+          backgroundRepeat:"repeat",
+          backgroundSize:"cover"
       }}
     >
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="relative w-[50rem] mx-auto p-6 bg-background rounded-lg shadow-neon bg-transparent text-white border-2 border-white"
+        className="relative w-full max-w-4xl mx-auto p-6 bg-background rounded-lg shadow-neon bg-transparent text-white border-2 border-white"
         style={{
-          width: "50rem",
           marginTop: "5rem",
           backgroundColor: "#ffffff5c",
           backdropFilter: "blur(2px)",
@@ -343,118 +346,54 @@ const TheaterBooking = () => {
         {Data.map((movie) => (
           <div
             key={movie._id}
+            className="w-full md:w-2/3 lg:w-1/2 xl:w-[34rem] mx-auto mb-4 p-4 rounded-lg border-2 border-black bg-cover bg-center"
             style={{
-              width: "34rem",
-              borderRadius: "14px",
-              border: "2px solid black",
-              height: "20rem",
-              margin: "12px",
-              background: `url(${movie.primaryImage})`,
-              backgroundSize: "cover",
+              backgroundImage: `url(${movie.primaryImage})`,
             }}
             onClick={() => handleRadioChange(movie._id)}
           >
-            
-            <div
-              style={{
-                borderRadius: "14px",
-                height: "20rem",
-                padding: "1rem",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-evenly",
-                background: "#ffffff38",
-                backdropFilter: "blur(1px)",
-              }}
-            >
-            <input
-              type="radio"
-              className="form-radio"
-              name="feature"
-              value={movie._id}
-              checked={selectedFeature === movie._id}
-              onChange={() => handleRadioChange(movie._id)}
-            />
-              <div className="font-extrabold text-5xl">{movie.titleText}</div>
+            <div className="w-full h-90 p-4 flex flex-col justify-evenly bg-transparent bg-opacity-40 backdrop-filter backdrop-blur-lg rounded-lg">
+              <input
+                type="radio"
+                className="form-radio"
+                name="feature"
+                value={movie._id}
+                checked={selectedFeature === movie._id}
+                onChange={() => handleRadioChange(movie._id)}
+                required
+              />
+              <div className="font-extrabold text-5xl text-black">{movie.titleText}</div>
               <div className="flex justify-between">
-                <div
-                  style={{
-                    border: "2px solid black",
-                    display: "flex",
-                    width: "fit-content",
-                    borderRadius: "12px",
-                    backgroundColor: "#f0f8ff70",
-                    padding: "4px",
-                    fontWeight: "700",
-                  }}
-                >
+                <div className="border-2 border-black text-black p-1 rounded-lg bg-opacity-40 bg-blue-100 font-bold">
                   {movie.titleType}
                 </div>
-                <div
-                  className="flex flex-row flex-wrap justify-normal w-fit"
-                  style={{
-                    width: "fit-content",
-                    borderLeft: "none",
-                    borderRadius: "21px",
-                    background: "black",
-                    color: "white",
-                    paddingLeft: "12px",
-                    paddingRight: "12px",
-                    fontWeight: "900",
-                    fontFamily: "emoji",
-                    fontStyle: "oblique",
-                    textShadow: "3px 4px 11px white",
-                    boxShadow: "0px 0px 14px 7px black",
-                    gap: "1rem",
-                  }}
-                >
-                  {movie.titleGenres?movie.titleGenres.join(","):""}
+                <div className="flex flex-wrap w-fit bg-black text-white p-2 rounded-full font-bold">
+                  {movie.titleGenres ? movie.titleGenres.join(",") : ""}
                 </div>
               </div>
-              <div
-                style={{
-                  fontFamily: "emoji",
-                  fontStyle: "oblique",
-                  display: "flex",
-                  flexBasis: "fit-content",
-                  flexWrap: "wrap",
-                  border: "2px solid black",
-                  fontWeight: "700",
-                  borderRadius: "12px",
-                }}
-              >
-                <div className="font-extrabold">Heros:</div>
-                {movie.heros?movie.heros.join(","):""}
+              <div className="flex flex-wrap border-2 border-black p-2 rounded-lg font-bold">
+                <div className="font-extrabold mr-2">Heros:</div>
+                {movie.heros ? movie.heros.join(",") : ""}
               </div>
-              <div style={{ display: "flex", flexDirection: "row ", justifyContent: "space-evenly " }}>
-                <div className="text-red-800 font-extrabold">
+              <div className="flex justify-evenly text-red-800 font-extrabold justify-between">
+                <div>
                   {movie.runtime
-                    ?` ${Math.floor(movie.runtime / 3600)}h ${Math.floor(
+                    ? `${Math.floor(movie.runtime / 3600)}h ${Math.floor(
                         (movie.runtime % 3600) / 60
                       )}m`
                     : "N/A"}{" "}
                   hrs
                 </div>
-                <div  className="text-red-800 font-extrabold">{movie.releaseYear}</div>
+                <div>{movie.releaseYear}</div>
               </div>
-              <div >
+              <div>
                 <Rating name="customized-10" value={Number(movie.ratingsSammary)} max={10} />
               </div>
-              <div className="flex flex-row">
-                <div
-                  style={{
-                    display: "flex",
-                    width: "fit-content",
-                    border: "2px solid black",
-                    borderRadius: "12px",
-                    padding: "4px",
-                    fontSize: "x-small",
-                    fontWeight: "900",
-                  }}
-                >
+              <div className="flex justify-between">
+                <div className="border-2 border-black p-1 rounded-lg font-bold">
                   {movie.certificateratting}
                 </div>
-                <div>{movie.price}/-</div>
+                <div className="ml-2">{movie.price}/-</div>
               </div>
             </div>
           </div>
@@ -465,6 +404,7 @@ const TheaterBooking = () => {
           name="dateTime"
           value={formData.dateTime}
           onChange={handleChange}
+          required
         />
         <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
           Customer Information
@@ -475,6 +415,7 @@ const TheaterBooking = () => {
           name="customerName"
           value={formData.customerName}
           onChange={handleChange}
+          required
         />
         <Input
           label="Contact Number"
@@ -482,6 +423,7 @@ const TheaterBooking = () => {
           name="contactNumber"
           value={formData.contactNumber}
           onChange={handleChange}
+          required
         />
         <Input
           label="Email"
@@ -489,6 +431,7 @@ const TheaterBooking = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
+          required
         />
         <Input
           label="Address"
@@ -496,6 +439,7 @@ const TheaterBooking = () => {
           name="address"
           value={formData.address}
           onChange={handleChange}
+          required
         />
         <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
           Seating Details
@@ -506,6 +450,7 @@ const TheaterBooking = () => {
           name="numberOfSeats"
           value={formData.numberOfSeats}
           onChange={handleChange}
+          required
         />
         <Input
           label="Seating Arrangement"
@@ -513,221 +458,228 @@ const TheaterBooking = () => {
           name="seatingArrangement"
           value={formData.seatingArrangement}
           onChange={handleChange}
+          required
         />
         <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
           Additional Services
         </h3>
         <div className="productable">
-      <div className="shadow-lg flex flex-row flex-wrap p-4 gap-4 bg-white">
-        <button
-          onClick={(e)=>{refresh(e)}}
-          className="border border-black rounded p-2 mb-2 hover-animation"
-        >
-          Refresh
-        </button>
-        <button
-          onClick={(e) => sortDataBy("FOODNAME",e)}
-          className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-        >
-          Sort by Food Name
-        </button>
-        <button
-          onClick={(e) => sortDataBy("CUSSINE",e)}
-          className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-        >
-          Sort by Cuisine
-        </button>
-        <button
-          onClick={(e) => sortDataBy("DISCOUNT",e)}
-          className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-        >
-          Sort by Discount
-        </button>
-        <button
-          onClick={(e) => sortDataBy("PRICE",e)}
-          className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-        >
-          Sort by Price
-        </button>
-        <div className="border border-black rounded p-2 mb-2">
-          <label
-            htmlFor="rating"
-            className="block text-sm font-medium text-gray-900 bg-white"
-          >
-            Filter by Rating
-          </label>
-          <select
-            id="rating"
-            className="mt-1 block w-full bg-blue-100 backdrop:blur-md rounded-3xl bg-white"
-            onChange={handleRatingChange}
-          >
-            <option value="">All Ratings</option>
-            <option value="1">1 Star & Up</option>
-            <option value="2">2 Stars & Up</option>
-            <option value="3">3 Stars & Up</option>
-            <option value="4">4 Stars & Up</option>
-            <option value="5">5 Stars</option>
-          </select>
-        </div>
-        <div className="border border-black rounded p-2 mb-2 bg-white">
-          <label
-            htmlFor="cuisine"
-            className="block text-sm font-medium text-gray-900 "
-          >
-            Filter by Cuisine
-          </label>
-          <select
-            id="cuisine"
-            className="mt-1 block w-full backdrop:blur-md rounded-3xl bg-blue-100 bg-white"
-            onChange={handleCuisineChange}
-          >
-            <option value="">All Cuisines</option>
-            <option value="Italian">Italian</option>
-            <option value="Chinese">Chinese</option>
-            <option value="Mexican">Mexican</option>
-            <option value="Indian">Indian</option>
-          </select>
-        </div>
-        <div className="border border-black rounded p-2 mb-2 bg-white">
-          <label className="block text-sm font-medium text-gray-900 bg-white">
-            Filter by Price Range
-          </label>
-          <div className="flex items-center justify-between bg-white">
-            <input
-              type="number"
-              name="min"
-              className="w-full mr-2 backdrop:blur-md rounded-3xl bg-blue-100"
-              value={priceRange[0]}
-              onChange={handlePriceRangeChange}
-              placeholder="Min Price"
-            />
-            <input
-              type="number"
-              name="max"
-              className="w-full ml-2 backdrop:blur-md rounded-3xl bg-blue-100"
-              value={priceRange[1]}
-              onChange={handlePriceRangeChange}
-              placeholder="Max Price"
-            />
+          <div className="shadow-lg flex flex-wrap p-4 gap-4 bg-white">
+            <button
+              onClick={(e) => refresh(e)}
+              className="border border-black rounded p-2 mb-2 hover-animation"
+            >
+              Refresh
+            </button>
+            <button
+              onClick={(e) => sortDataBy("FOODNAME", e)}
+              className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+            >
+              Sort by Food Name
+            </button>
+            <button
+              onClick={(e) => sortDataBy("CUSSINE", e)}
+              className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+            >
+              Sort by Cuisine
+            </button>
+            <button
+              onClick={(e) => sortDataBy("DISCOUNT", e)}
+              className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+            >
+              Sort by Discount
+            </button>
+            <button
+              onClick={(e) => sortDataBy("PRICE", e)}
+              className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+            >
+              Sort by Price
+            </button>
+            <div className="border border-black rounded p-2 mb-2">
+              <label
+                htmlFor="rating"
+                className="block text-sm font-medium text-gray-900 bg-white"
+              >
+                Filter by Rating
+              </label>
+              <select
+                id="rating"
+                className="mt-1 block w-full bg-blue-100 backdrop:blur-md rounded-3xl bg-white"
+                onChange={handleRatingChange}
+              >
+                <option value="">All Ratings</option>
+                <option value="1">1 Star & Up</option>
+                <option value="2">2 Stars & Up</option>
+                <option value="3">3 Stars & Up</option>
+                <option value="4">4 Stars & Up</option>
+                <option value="5">5 Stars</option>
+              </select>
+            </div>
+            <div className="border border-black rounded p-2 mb-2 bg-white">
+              <label
+                htmlFor="cuisine"
+                className="block text-sm font-medium text-gray-900 "
+              >
+                Filter by Cuisine
+              </label>
+              <select
+                id="cuisine"
+                className="mt-1 block w-full backdrop:blur-md rounded-3xl bg-blue-100 bg-white"
+                onChange={handleCuisineChange}
+              >
+                <option value="">All Cuisines</option>
+                <option value="Italian">Italian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Indian">Indian</option>
+              </select>
+            </div>
+            <div className="border border-black rounded p-2 mb-2 bg-white">
+              <label className="block text-sm font-medium text-gray-900 bg-white">
+                Filter by Price Range
+              </label>
+              <div className="flex items-center justify-between bg-white">
+                <input
+                  type="number"
+                  name="min"
+                  className="w-full mr-2 backdrop:blur-md rounded-3xl bg-blue-100"
+                  value={priceRange[0]}
+                  onChange={handlePriceRangeChange}
+                  placeholder="Min Price"
+                />
+                <input
+                  type="number"
+                  name="max"
+                  className="w-full ml-2 backdrop:blur-md rounded-3xl bg-blue-100"
+                  value={priceRange[1]}
+                  onChange={handlePriceRangeChange}
+                  placeholder="Max Price"
+                />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <TableContainer component={Paper} className="tablecontainer">
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell className="tableCell">FOODNAME</TableCell>
-              <TableCell className="tableCell">PRICE</TableCell>
-              <TableCell className="tableCell">RATINGS</TableCell>
-              <TableCell className="tableCell">TAGS</TableCell>
-              <TableCell className="tableCell">Select</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {data.map((row) => (
-              <TableRow key={row._id}>
-                <TableCell className="tableCell">
-                  <div className="cellWrapper">
-                    <Image src={row.CloudanaryImageId} alt="" className="image" />
-                    {row.FOODNAME}
-                  </div>
-                </TableCell>
-                <TableCell className="tableCell">{row.PRICE}</TableCell>
-                <TableCell className="tableCell">{row.RATINGS}</TableCell>
-                <TableCell className="tableCell">{row.TAGS}</TableCell>
-                <TableCell className="tableCell">
-                  {!selectedRows[row._id] ? (
-                    <button onClick={(e) => handleSelect(row._id,e)}>Select</button>
-                  ) : (
-                    <div className="w-24">
-                      <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
-                        <button
-                          data-action="decrement"
-                          className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
-                          onClick={(e) => handleDecrement(row._id,e)}
-                        >
-                          <span className="m-auto text-2xl font-thin">−</span>
-                        </button>
-                        <input
-                          type="number"
-                          className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-900 outline-none custom-input-number"
-                          name="custom-input-number"
-                          value={quantities[row._id]}
-                          readOnly
-                        />
-                        <button
-                          data-action="increment"
-                          className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
-                          onClick={(e) => handleIncrement(row._id,e)}
-                        >
-                          <span className="m-auto text-2xl font-thin">+</span>
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </TableCell>
+          <TableContainer component={Paper} className="tablecontainer">
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell className="tableCell">FOODNAME</TableCell>
+                <TableCell className="tableCell">PRICE</TableCell>
+                <TableCell className="tableCell">RATINGS</TableCell>
+                <TableCell className="tableCell">TAGS</TableCell>
+                <TableCell className="tableCell">Select</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <div className="flex justify-center  bg-white">
-        <button
-          onClick={(e) => handlePageChange(currentPage - 1,e)}
-          disabled={currentPage === 1}
-          className="border border-black rounded p-2 mr-2"
-        >
-          Previous
-        </button>
-        <span>{`Page ${currentPage} of ${totalPages}`}</span>
-        <button
-          onClick={(e) => handlePageChange(currentPage + 1,e)}
-          disabled={currentPage === totalPages}
-          className="border border-black rounded p-2 ml-2"
-        >
-          Next
-        </button>
-      </div>
-    </div>
-        <Input
-          label="Special Requests"
-          type="text"
-          name="specialRequests"
-          value={formData.specialRequests}
-          onChange={handleChange}
-        />
-        <Input
-          label="Additional Equipment"
-          type="text"
-          name="additionalEquipment"
-          value={formData.additionalEquipment}
-          onChange={handleChange}
-        />
-
-        <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
-          Internal Use
-        </h3>
-        <Input
-          label="Staff Handling"
-          type="text"
-          name="staffHandling"
-          value={formData.staffHandling}
-          onChange={handleChange}
-        />
-        <Input
-          label="Notes"
-          type="text"
-          name="notes"
-          value={formData.notes}
-          onChange={handleChange}
-        />
-        <div className="flex justify-center">
-          <Button className="bg-red-500 m-2 rounded-3xl w-[23rem]" text="Submit" type="submit" />
+            </TableHead>
+            <TableBody>
+              {data.map((row) => (
+                <TableRow key={row._id}>
+                  <TableCell className="tableCell">
+                    <div className="cellWrapper">
+                      <img src={row.CloudanaryImageId} alt="" className="image" />
+                      {row.FOODNAME}
+                    </div>
+                  </TableCell>
+                  <TableCell className="tableCell">{row.PRICE}</TableCell>
+                  <TableCell className="tableCell">{row.RATINGS}</TableCell>
+                  <TableCell className="tableCell">{row.TAGS}</TableCell>
+                  <TableCell className="tableCell">
+                    {!selectedRows[row._id] ? (
+                      <button onClick={(e) => handleSelect(row._id,e)}>Select</button>
+                    ) : (
+                      <div className="w-24">
+                        <div className="flex flex-row h-10 w-full rounded-lg relative bg-transparent mt-1">
+                          <button
+                            data-action="decrement"
+                            className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-l cursor-pointer outline-none"
+                            onClick={(e) => handleDecrement(row._id,e)}
+                          >
+                            <span className="m-auto text-2xl font-thin">−</span>
+                          </button>
+                          <input
+                            type="number"
+                            className="outline-none focus:outline-none text-center w-full bg-gray-300 font-semibold text-md hover:text-black focus:text-black md:text-basecursor-default flex items-center text-gray-900 outline-none custom-input-number"
+                            name="custom-input-number"
+                            value={quantities[row._id]}
+                            readOnly
+                          />
+                          <button
+                            data-action="increment"
+                            className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-20 rounded-r cursor-pointer"
+                            onClick={(e) => handleIncrement(row._id,e)}
+                          >
+                            <span className="m-auto text-2xl font-thin">+</span>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <div className="flex justify-center  bg-white">
+          <button
+            onClick={(e) => handlePageChange(currentPage - 1,e)}
+            disabled={currentPage === 1}
+            className="border border-black rounded p-2 mr-2"
+          >
+            Previous
+          </button>
+          <span>{`Page ${currentPage} of ${totalPages}`}</span>
+          <button
+            onClick={(e) => handlePageChange(currentPage + 1,e)}
+            disabled={currentPage === totalPages}
+            className="border border-black rounded p-2 ml-2"
+          >
+            Next
+          </button>
+        </div>  
         </div>
-      </form>
+        <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
+        Special Requests
+      </h3>
+      <Input
+        label="Special Requests"
+        type="text"
+        name="specialRequests"
+        value={formData.specialRequests}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        label="Additional Equipment"
+        type="text"
+        name="additionalEquipment"
+        value={formData.additionalEquipment}
+        onChange={handleChange}
+        required
+      />
+      <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
+        Internal Use
+      </h3>
+      <Input
+        label="Staff Handling"
+        type="text"
+        name="staffHandling"
+        value={formData.staffHandling}
+        onChange={handleChange}
+        required
+      />
+      <Input
+        label="Notes"
+        type="text"
+        name="notes"
+        value={formData.notes}
+        onChange={handleChange}
+        required
+      />
+      <div className="flex justify-center">
+        <Button className="bg-red-500 m-2 rounded-3xl w-[23rem]" text="Submit" type="submit" />
+      </div>
       <ToastContainer />
+      </form>
     </div>
   );
-};
+}  
 
 export default TheaterBooking;
