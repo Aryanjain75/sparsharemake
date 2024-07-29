@@ -87,13 +87,13 @@ function Navbar() {
               {isAuth && username ? "Logout" : "Login/Register"}
             </button>
           </div>
-          <button onClick={toggleMenu} className="block lg:hidden text-2xl">
+          <button onClick={toggleMenu} className="block lg:hidden text-2xl bg-transparent m-0">
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
         </div>
       </div>
       {isOpen && (
-        <div className="lg:hidden w-full h-screen fixed bg-gray-900 text-white z-40 flex flex-col items-center justify-center  top-[2rem] ">
+        <div className="lg:hidden w-full h-screen fixed bg-gray-900 text-white z-40 flex flex-col items-center pt-[2vw] space-y-4" style={{justifyContent:"center"}} >
           <Link href="/" className="text-xl" onClick={toggleMenu}>Home</Link>
           <Link href="/Menu" className="text-xl" onClick={toggleMenu}>Menu</Link>
           <Link href="/Photos" className="text-xl" onClick={toggleMenu}>Photos</Link>
