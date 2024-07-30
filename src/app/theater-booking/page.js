@@ -406,7 +406,6 @@ const TheaterBooking = () => {
           name="dateTime"
           value={formData.dateTime}
           onChange={handleChange}
-          required
         />
         <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
           Customer Information
@@ -417,7 +416,6 @@ const TheaterBooking = () => {
           name="customerName"
           value={formData.customerName}
           onChange={handleChange}
-          required
         />
         <Input
           label="Contact Number"
@@ -425,7 +423,6 @@ const TheaterBooking = () => {
           name="contactNumber"
           value={formData.contactNumber}
           onChange={handleChange}
-          required
         />
         <Input
           label="Email"
@@ -433,7 +430,6 @@ const TheaterBooking = () => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          required
         />
         <Input
           label="Address"
@@ -441,7 +437,6 @@ const TheaterBooking = () => {
           name="address"
           value={formData.address}
           onChange={handleChange}
-          required
         />
         <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
           Seating Details
@@ -452,7 +447,6 @@ const TheaterBooking = () => {
           name="numberOfSeats"
           value={formData.numberOfSeats}
           onChange={handleChange}
-          required
         />
         <Input
           label="Seating Arrangement"

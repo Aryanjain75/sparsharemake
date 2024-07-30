@@ -57,8 +57,8 @@ function Navbar() {
 
   return (
     <>
-      <div className="w-full h-16 fixed flex justify-center text-white z-50 mt-2">
-        <div ref={ref} className="flex justify-between items-center w-11/12 lg:w-3/4 bg-black border-black border-2 rounded-full px-6">
+      <div className="w-full h-16 fixed flex justify-center text-white z-50 mt-2" style={{justifyContent: 'center',}}>
+        <div ref={ref} className="flex justify-between items-center w-[70%] lg:w-3/4 bg-black border-black border-2 rounded-full px-6">
           <div ref={name} className="text-3xl font-bold">Sparsha</div>
           <div ref={menu} id="menu" className={`lg:flex items-center space-x-8 text-lg font-medium hidden lg:flex-row flex-col lg:space-y-0 space-y-8`}>
             <span><Link id="l" href="/" className="hover:text-orange-400 transition ease-in-out duration-150">Home</Link></span>
