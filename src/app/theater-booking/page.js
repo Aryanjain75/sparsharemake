@@ -463,31 +463,50 @@ const TheaterBooking = () => {
           <div className="shadow-lg flex flex-wrap p-4 gap-4 bg-white">
             <button
               onClick={(e) => refresh(e)}
-              className="border border-black rounded p-2 mb-2 hover-animation"
+              className="border border-black rounded p-2 mb-2 " style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Refresh
             </button>
             <button
               onClick={(e) => sortDataBy("FOODNAME", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Food Name
             </button>
             <button
               onClick={(e) => sortDataBy("CUSSINE", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Cuisine
             </button>
             <button
               onClick={(e) => sortDataBy("DISCOUNT", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Discount
             </button>
             <button
               onClick={(e) => sortDataBy("PRICE", e)}
-              className="border border-black rounded p-2 mb-2 hover-animation bg-white"
+              className="border border-black rounded p-2 mb-2 hover-animation bg-white hover:scale-[1.2] hover:drop-shadow-md"
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Price
             </button>
@@ -495,12 +514,20 @@ const TheaterBooking = () => {
               <label
                 htmlFor="rating"
                 className="block text-sm font-medium text-gray-900 bg-white"
+                style={{
+                  border: '2px solid black',
+      color: "black",
+      background: "aliceblue"}} 
               >
                 Filter by Rating
               </label>
               <select
                 id="rating"
                 className="mt-1 block w-full bg-blue-100 backdrop:blur-md rounded-3xl bg-white"
+                style={{
+                  border: '2px solid black',
+      color: "black",
+      background: "aliceblue"}} 
                 onChange={handleRatingChange}
               >
                 <option value="">All Ratings</option>
