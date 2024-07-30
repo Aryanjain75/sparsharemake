@@ -459,7 +459,7 @@ const TheaterBooking = () => {
         <h3 className="text-2xl font-bold mb-4 text-primary font-anime text-white">
           Additional Services
         </h3>
-        <div className="productable overflow-auto">
+        <div className="productable">
           <div className="shadow-lg flex flex-wrap p-4 gap-4 bg-white">
             <button
               onClick={(e) => refresh(e)}

@@ -65,8 +65,8 @@ const Hero = () => {
           </div>
         </div>
       </div>
-      <div className="relative z-3 top-[calc(100vh-65%)] sm:top-[calc(100vh-30%)] md:top-[calc(100vh-65%)] lg:top-[calc(100vh-60%)]">
-        <div className="flex flex-col items-center px-4 gap-8 mx-[1rem] md:mx-[5rem]">
+      <div className="relative z-3 top-[calc(100vh-65%)] sm:top-[calc(100vh-30%)] md:top-[calc(100vh-65%)] lg:top-[calc(100vh-60%)]" style={{justifyContent:'center',display:'flex'}}>
+        <div className="flex flex-col items-center px-4 gap-8 mx-[1rem] md:mx-[5rem] w-fit">
           <div className="text-neutral-600 dark:text-neutral-400 gap-1 text-center">
             <FlipWords words={words} />
             <FlipWords words={words1} />
