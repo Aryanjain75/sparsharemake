@@ -697,7 +697,7 @@ const TheaterBooking = () => {
         required
       />
       <div className="flex justify-center">
-        <Button className="bg-red-500 m-2 rounded-3xl w-[23rem]" text="Submit" type="submit" />
+        <button className="bg-red-500 m-2 rounded-3xl w-fit h-fit"  type="submit" >Submit</button>
       </div>
       <ToastContainer />
       </form>
