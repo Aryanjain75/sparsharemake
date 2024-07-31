@@ -331,7 +331,7 @@ function Page() {
  return (
   <div className="w-full overflow-x-hidden" style={{ backgroundImage: "url('https://media.ouest-france.fr/v1/pictures/2bb85adbe40d6722b19d55f599d7df56-144654.jpg?width=1400&client_id=eds&sign=9fea0896b3b4f8a398415aa43263bd9b7cbfa176f0eeda7a07859ac9f7265af6')", backgroundSize: "cover", backgroundPosition: "center" }}>
     <div className="flex justify-center text-white text-5xl flex items-center justify-items-center">
-      <form ref={ref} className="relative border-2 border-white w-full max-w-3xl p-8 flex flex-col mx-4" onSubmit={validateAndSend} style={{ margin: "4rem 0", background: "#7c6b6b6b", backdropFilter: "blur(10px)" }}>
+      <form ref={ref} className="relative border-2 border-white w-full max-w-3xl p-8 flex flex-col mx-4" onSubmit={validateAndSend} style={{ margin: "6rem auto", background: "#7c6b6b6b", backdropFilter: "blur(10px)" }}>
         <h1 className="p-2 font-bold">Birthday Hall Booking</h1>
         <div className="flex flex-col w-[100%]  gap-4 text-xl">
           <label htmlFor="name">Name</label>
@@ -368,123 +368,38 @@ function Page() {
           <div className="shadow-lg flex flex-wrap p-4 gap-4 bg-white">
             <button
               onClick={(e) => refresh(e)}
-              className="border border-black rounded p-2 mb-2 " style={{
-                border: '2px solid black',
-    color: "black",
-    background: "aliceblue"}} 
+              className="border border-black rounded p-2 mb-2 " 
             >
               Refresh
             </button>
             <button
               onClick={(e) => sortDataBy("FOODNAME", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-              style={{
-                border: '2px solid black',
-    color: "black",
-    background: "aliceblue"}} 
+              
             >
               Sort by Food Name
             </button>
             <button
               onClick={(e) => sortDataBy("CUSSINE", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-              style={{
-                border: '2px solid black',
-    color: "black",
-    background: "aliceblue"}} 
+               
             >
               Sort by Cuisine
             </button>
             <button
               onClick={(e) => sortDataBy("DISCOUNT", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-              style={{
-                border: '2px solid black',
-    color: "black",
-    background: "aliceblue"}} 
+               
             >
               Sort by Discount
             </button>
             <button
               onClick={(e) => sortDataBy("PRICE", e)}
-              className="border border-black rounded p-2 mb-2 hover-animation bg-white hover:scale-[1.2] hover:drop-shadow-md"
-              style={{
-                border: '2px solid black',
-    color: "black",
-    background: "aliceblue"}} 
+              className="border border-black rounded p-2 mb-2 hover-animation bg-white hover:scale-[1.2] hover:drop-shadow-md" 
             >
               Sort by Price
             </button>
-            <div className="border border-black rounded p-2 mb-2">
-              <label
-                htmlFor="rating"
-                className="block text-sm font-medium text-gray-900 bg-white"
-                style={{
-                  border: '2px solid black',
-      color: "black",
-      background: "aliceblue"}} 
-              >
-                Filter by Rating
-              </label>
-              <select
-                id="rating"
-                className="mt-1 block w-full bg-blue-100 backdrop:blur-md rounded-3xl bg-white"
-                style={{
-                  border: '2px solid black',
-      color: "black",
-      background: "aliceblue"}} 
-                onChange={handleRatingChange}
-              >
-                <option value="">All Ratings</option>
-                <option value="1">1 Star & Up</option>
-                <option value="2">2 Stars & Up</option>
-                <option value="3">3 Stars & Up</option>
-                <option value="4">4 Stars & Up</option>
-                <option value="5">5 Stars</option>
-              </select>
-            </div>
-            <div className="border border-black rounded p-2 mb-2 bg-white">
-              <label
-                htmlFor="cuisine"
-                className="block text-sm font-medium text-gray-900 "
-              >
-                Filter by Cuisine
-              </label>
-              <select
-                id="cuisine"
-                className="mt-1 block w-full backdrop:blur-md rounded-3xl bg-blue-100 bg-white"
-                onChange={handleCuisineChange}
-              >
-                <option value="">All Cuisines</option>
-                <option value="Italian">Italian</option>
-                <option value="Chinese">Chinese</option>
-                <option value="Mexican">Mexican</option>
-                <option value="Indian">Indian</option>
-              </select>
-            </div>
-            <div className="border border-black rounded p-2 mb-2 bg-white">
-              <label className="block text-sm font-medium text-gray-900 bg-white">
-                Filter by Price Range
-              </label>
-              <div className="flex items-center justify-between bg-white">
-                <input
-                  type="number"
-                  name="min"
-                  className="w-full mr-2 backdrop:blur-md rounded-3xl bg-blue-100"
-                  value={priceRange[0]}
-                  onChange={handlePriceRangeChange}
-                  placeholder="Min Price"
-                />
-                <input
-                  type="number"
-                  name="max"
-                  className="w-full ml-2 backdrop:blur-md rounded-3xl bg-blue-100"
-                  value={priceRange[1]}
-                  onChange={handlePriceRangeChange}
-                  placeholder="Max Price"
-                />
-              </div>
-            </div>
+            
           </div>
           <TableContainer component={Paper} className="tablecontainer">
           <Table sx={{ minWidth: 650 }} aria-label="simple table">

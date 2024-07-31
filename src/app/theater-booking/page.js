@@ -335,8 +335,7 @@ const TheaterBooking = () => {
         onSubmit={handleSubmit}
         className="relative w-full max-w-4xl mx-auto p-6 overflow-x-hidden bg-background rounded-lg shadow-neon bg-transparent text-white border-2 border-white"
         style={{
-          margin:" 0px auto",
-          marginTop: "6rem",
+          marginTop: "5rem",
           backgroundColor: "#ffffff5c",
           backdropFilter: "blur(2px)",
         }}
@@ -464,50 +463,71 @@ const TheaterBooking = () => {
           <div className="shadow-lg flex flex-wrap p-4 gap-4 bg-white">
             <button
               onClick={(e) => refresh(e)}
-              className="border border-black rounded p-2 mb-2 " 
+              className="border border-black rounded p-2 mb-2 " style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Refresh
             </button>
             <button
               onClick={(e) => sortDataBy("FOODNAME", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-              
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Food Name
             </button>
             <button
               onClick={(e) => sortDataBy("CUSSINE", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-             
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Cuisine
             </button>
             <button
               onClick={(e) => sortDataBy("DISCOUNT", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white"
-            
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Discount
             </button>
             <button
               onClick={(e) => sortDataBy("PRICE", e)}
               className="border border-black rounded p-2 mb-2 hover-animation bg-white hover:scale-[1.2] hover:drop-shadow-md"
-             
+              style={{
+                border: '2px solid black',
+    color: "black",
+    background: "aliceblue"}} 
             >
               Sort by Price
             </button>
-            <div className="border border-black rounded p-2 mb-2 ratting">
+            <div className="border border-black rounded p-2 mb-2">
               <label
                 htmlFor="rating"
                 className="block text-sm font-medium text-gray-900 bg-white"
-               
+                style={{
+                  border: '2px solid black',
+      color: "black",
+      background: "aliceblue"}} 
               >
                 Filter by Rating
               </label>
               <select
                 id="rating"
                 className="mt-1 block w-full bg-blue-100 backdrop:blur-md rounded-3xl bg-white"
-               
+                style={{
+                  border: '2px solid black',
+      color: "black",
+      background: "aliceblue"}} 
                 onChange={handleRatingChange}
               >
                 <option value="">All Ratings</option>
@@ -516,6 +536,25 @@ const TheaterBooking = () => {
                 <option value="3">3 Stars & Up</option>
                 <option value="4">4 Stars & Up</option>
                 <option value="5">5 Stars</option>
+              </select>
+            </div>
+            <div className="border border-black rounded p-2 mb-2 bg-white">
+              <label
+                htmlFor="cuisine"
+                className="block text-sm font-medium text-gray-900 "
+              >
+                Filter by Cuisine
+              </label>
+              <select
+                id="cuisine"
+                className="mt-1 block w-full backdrop:blur-md rounded-3xl bg-blue-100 bg-white"
+                onChange={handleCuisineChange}
+              >
+                <option value="">All Cuisines</option>
+                <option value="Italian">Italian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Indian">Indian</option>
               </select>
             </div>
             <div className="border border-black rounded p-2 mb-2 bg-white">
