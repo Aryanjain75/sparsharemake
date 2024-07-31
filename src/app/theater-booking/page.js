@@ -335,7 +335,8 @@ const TheaterBooking = () => {
         onSubmit={handleSubmit}
         className="relative w-full max-w-4xl mx-auto p-6 overflow-x-hidden bg-background rounded-lg shadow-neon bg-transparent text-white border-2 border-white"
         style={{
-          marginTop: "5rem",
+          margin:" 0px auto",
+          marginTop: "6rem",
           backgroundColor: "#ffffff5c",
           backdropFilter: "blur(2px)",
         }}
