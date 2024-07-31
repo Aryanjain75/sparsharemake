@@ -3,6 +3,7 @@ import { useGSAP } from "@gsap/react";
 import React, { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import axios from "axios";
+
 function Page() {
    const ref = useRef(null);
 
@@ -28,8 +29,9 @@ function Page() {
    useEffect(() => {
       gsap.to(ref.current, {
          scale: 1,
-         x:-1500,
-         duration: 1
+         x: 0,
+         duration: 1,
+         ease: "power3.out",
       });
    }, []);
 
@@ -99,41 +101,55 @@ function Page() {
    }
 
    return (
-      <div className='w-full overflow-x-hidden' style={{ backgroundImage: "url('https://media.ouest-france.fr/v1/pictures/2bb85adbe40d6722b19d55f599d7df56-144654.jpg?width=1400&client_id=eds&sign=9fea0896b3b4f8a398415aa43263bd9b7cbfa176f0eeda7a07859ac9f7265af6')", backgroundSize: "cover", backgroundPosition: "center" }}>
-         <div className='flex justify-center text-white text-5xl'>
-            <form ref={ref} className="relative border-2 border-white w-[50rem] p-8 flex flex-col" onSubmit={validateAndSend} style={{left:"1500px", margin: "20rem 0rem", background: "#7c6b6b6b", backdropFilter: "blur(10px)" }}>
-               <h1 className='p-2 font-bold'>Resturent seat Booking</h1>
-               <div className='grid sm:grid-cols-3 md:grid-cols-2 lg:grid-cols-1 text-xl'>
-                  <label htmlFor="name">Name</label>
-                  <input type="text" name="name" placeholder='Your Name' onChange={(e) => setName(e.target.value)} className='bg-transparent border-2 p-2'/>
-                  {errorName && <span className="text-red-500">{errorName}</span>}
+      <div className='w-full overflow-x-hidden min-h-screen' style={{ backgroundImage: "url('https://media.ouest-france.fr/v1/pictures/2bb85adbe40d6722b19d55f599d7df56-144654.jpg?width=1400&client_id=eds&sign=9fea0896b3b4f8a398415aa43263bd9b7cbfa176f0eeda7a07859ac9f7265af6')", backgroundSize: "cover", backgroundPosition: "center" }}>
+         <div className='flex justify-center items-center text-white text-5xl'>
+            <form ref={ref} className="relative border-2 border-white w-full max-w-3xl p-8 flex flex-col mx-4 md:mx-0" onSubmit={validateAndSend} style={{ margin: "20rem 0rem", background: "#7c6b6b6b", backdropFilter: "blur(10px)" }}>
+               <h1 className='p-2 font-bold text-center'>Restaurant Seat Booking</h1>
+               <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-2 text-xl'>
+                  <div>
+                    <label htmlFor="name">Name</label>
+                    <input type="text" name="name" placeholder='Your Name' onChange={(e) => setName(e.target.value)} className='bg-transparent border-2 p-2 w-full'/>
+                    {errorName && <span className="text-red-500">{errorName}</span>}
+                  </div>
 
-                  <label htmlFor="email">Email</label>
-                  <input type="text" name="email" placeholder='Your Email' onChange={(e) => setEmail(e.target.value)} className='bg-transparent border-2 p-2'/>
-                  {errorEmail && <span className="text-red-500">{errorEmail}</span>}
+                  <div>
+                    <label htmlFor="email">Email</label>
+                    <input type="email" name="email" placeholder='Your Email' onChange={(e) => setEmail(e.target.value)} className='bg-transparent border-2 p-2 w-full'/>
+                    {errorEmail && <span className="text-red-500">{errorEmail}</span>}
+                  </div>
 
-                  <label htmlFor="phone">Phone</label>
-                  <input type="number" name="phone" placeholder='Your Phone' onChange={(e) => setPhone(e.target.value)} className='bg-transparent border-2 p-2'/>
-                  {errorPhone && <span className="text-red-500">{errorPhone}</span>}
+                  <div>
+                    <label htmlFor="phone">Phone</label>
+                    <input type="number" name="phone" placeholder='Your Phone' onChange={(e) => setPhone(e.target.value)} className='bg-transparent border-2 p-2 w-full'/>
+                    {errorPhone && <span className="text-red-500">{errorPhone}</span>}
+                  </div>
 
-                  <label htmlFor="date">Date</label>
-                  <input type="date" name="date" placeholder='Date' onChange={(e) => setDate(e.target.value)} className='bg-transparent border-2 p-2'/>
-                  {errorDate && <span className="text-red-500">{errorDate}</span>}
+                  <div>
+                    <label htmlFor="date">Date</label>
+                    <input type="date" name="date" placeholder='Date' onChange={(e) => setDate(e.target.value)} className='bg-transparent border-2 p-2 w-full'/>
+                    {errorDate && <span className="text-red-500">{errorDate}</span>}
+                  </div>
 
-                  <label htmlFor="time">Time</label>
-                  <input type="time" name="time" placeholder='Time' onChange={(e) => setTime(e.target.value)} className='bg-transparent border-2 p-2'/>
-                  {errorTime && <span className="text-red-500">{errorTime}</span>}
+                  <div>
+                    <label htmlFor="time">Time</label>
+                    <input type="time" name="time" placeholder='Time' onChange={(e) => setTime(e.target.value)} className='bg-transparent border-2 p-2 w-full'/>
+                    {errorTime && <span className="text-red-500">{errorTime}</span>}
+                  </div>
 
-                  <label htmlFor="noOfPeople">Number of People</label>
-                  <input type="text" name="noOfPeople" placeholder='Number of People' onChange={(e) => setNoOfPeople(e.target.value)} className='bg-transparent border-2 p-2'/>
-                  {errorNoOfPeople && <span className="text-red-500">{errorNoOfPeople}</span>}
+                  <div>
+                    <label htmlFor="noOfPeople">Number of People</label>
+                    <input type="text" name="noOfPeople" placeholder='Number of People' onChange={(e) => setNoOfPeople(e.target.value)} className='bg-transparent border-2 p-2 w-full'/>
+                    {errorNoOfPeople && <span className="text-red-500">{errorNoOfPeople}</span>}
+                  </div>
                </div>
 
-               <label htmlFor="message" className='text-xl'>Message</label>
-               <input type="text" name="message" placeholder='Message' onChange={(e) => setMessage(e.target.value)} className='bg-transparent border-2 p-2'/>
-               {errorMessage && <span className="text-red-500">{errorMessage}</span>}
+               <div className="mt-4">
+                 <label htmlFor="message" className='text-xl'>Message</label>
+                 <textarea name="message" placeholder='Message' onChange={(e) => setMessage(e.target.value)} className='bg-transparent border-2 p-2 w-full h-24'></textarea>
+                 {errorMessage && <span className="text-red-500">{errorMessage}</span>}
+               </div>
 
-               <button type="submit" className='mt-4 rounded-sm p-2 text-xl w-auto border-2 border-red bg-red-500'>Send Message</button>
+               <button type="submit" className='mt-6 rounded-sm p-3 text-xl w-full bg-red-500 hover:bg-red-600 transition-all'>Send Message</button>
             </form>
          </div>
       </div>
