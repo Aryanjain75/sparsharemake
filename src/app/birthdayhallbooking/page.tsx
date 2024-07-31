@@ -252,13 +252,7 @@ function Page() {
    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
    const phoneRegex = /^[6789]{1}[0-9]{9}$/;
 
-   useEffect(() => {
-      gsap.to(ref.current, {
-         scale: 1,
-         x:-1500,
-         duration: 1
-      });
-   }, []);
+   
 
    async function validateAndSend(event:any) {
       event.preventDefault();
@@ -339,7 +333,7 @@ function Page() {
     <div className="flex justify-center text-white text-5xl">
       <form ref={ref} className="relative border-2 border-white w-full max-w-3xl p-8 flex flex-col mx-4" onSubmit={validateAndSend} style={{ margin: "4rem 0", background: "#7c6b6b6b", backdropFilter: "blur(10px)" }}>
         <h1 className="p-2 font-bold">Birthday Hall Booking</h1>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xl">
+        <div className="flex flex-col w-[100%] items-center gap-4 text-xl">
           <label htmlFor="name">Name</label>
           <input type="text" name="name" placeholder="Your Name" onChange={(e) => setName(e.target.value)} className="bg-transparent border-2 p-2" />
           {errorName && <span className="text-red-500">{errorName}</span>}
