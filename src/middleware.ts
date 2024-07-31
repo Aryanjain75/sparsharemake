@@ -67,7 +67,7 @@ export async function middleware(request: NextRequest) {
       case '/verifyemail':
       case '/verify':
       case '/reset-password':
-      case '/Registrations':
+      case '/Registration':
       case '/forgetpassword':
         return NextResponse.next();
       case '/':
@@ -91,7 +91,7 @@ export const config = {
     '/verifyemail',
     '/verify',
     '/reset-password',
-    '/Registrations',
+    '/Registration',
     '/forgetpassword',
     '/admin/users',
     '/admin/users/[id]',
