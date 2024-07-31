@@ -460,19 +460,19 @@ function Page() {
             </TableBody>
           </Table>
         </TableContainer>
-        <div className="flex justify-center  bg-white">
+        <div className="flex justify-center  bg-white items-center">
           <button
             onClick={(e) => handlePageChange(currentPage - 1,e)}
             disabled={currentPage === 1}
-            className="border border-black rounded p-2 mr-2"
+            className="border border-black rounded p-2 "
           >
             Previous
           </button>
-          <span>{`Page ${currentPage} of ${totalPages}`}</span>
+          <span className="text-lg">{`Page ${currentPage} of ${totalPages}`}</span>
           <button
             onClick={(e) => handlePageChange(currentPage + 1,e)}
             disabled={currentPage === totalPages}
-            className="border border-black rounded p-2 ml-2"
+            className="border border-black rounded p-2 "
           >
             Next
           </button>
