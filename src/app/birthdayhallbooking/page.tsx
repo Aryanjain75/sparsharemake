@@ -60,7 +60,7 @@ function Page() {
   const itemsPerPage = 6;
   const [searchValue, setSearchValue] = useState("");
   const [Tags, setTags] = useState([]);
-  const [selectedRows, setSelectedRows] = useState({});
+  const [selectedRows, setSelectedRows] = useState<any>({});
   const [quantities, setQuantities] = useState<any>({});
 
 
@@ -216,7 +216,7 @@ function Page() {
   const handleDecrement = (id: string | number, e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     if (quantities[id] === 1) {
-      setSelectedRows((prev) => {
+      setSelectedRows((prev:any) => {
         const newRows:any = { ...prev };
         delete newRows[id];
         return newRows;
@@ -545,7 +545,7 @@ function Page() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {data.map((row:any) => (
               <TableRow key={row._id}>
                 <TableCell className="tableCell">
                   <div className="cellWrapper">
