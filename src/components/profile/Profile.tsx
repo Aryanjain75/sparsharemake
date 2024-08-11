@@ -27,7 +27,7 @@ export const Profile = () => {
                   <div className="w-24 rounded-full">
                     {/* Ensure the URL is correctly set */}
                     {url ? (
-                      <Image src={url} alt="User Avatar" onError={(e) => e.currentTarget.style.display = 'none'} />
+                      <img src={url} alt="User Avatar" onError={(e) => e.currentTarget.style.display = 'none'} />
                     ) : (
                       <p>No Image Available</p>
                     )}

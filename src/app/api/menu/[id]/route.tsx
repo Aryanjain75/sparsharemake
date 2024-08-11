@@ -58,14 +58,13 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         const discount = form.get('discount') as string;
         const price = form.get('price') as string;
         const discountedPrice = form.get('discountedPrice') as string;
-        const tags = form.get('tags') ;
-        const rating = form.get('rating') ;
+        const tags = form.get('tags')?.toString().split(',') || []; // Assuming tags are comma-separated
+        const rating = parseFloat(form.get('rating')?.toString() || '0');
         const file = form.get('image');
 
         let image: string | null = null;
 
         if (typeof file === 'string') {
-            // Check if the URL is from Cloudinary
             const isCloudinaryUrl = file.startsWith('https://res.cloudinary.com/');
             if (isCloudinaryUrl) {
                 image = file;
@@ -75,7 +74,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         } else if (file && file instanceof Blob) {
             const fileBuffer = Buffer.from(await file.arrayBuffer());
             const filePath = `public/uploads/${file.name}`;
-            fs.writeFileSync(filePath, fileBuffer);
+            await fs.promises.writeFile(filePath, fileBuffer);
 
             const uploader = async (path: string) => await uploadOnCloudinary(path);
             const avatarResponse = await uploader(filePath);
@@ -87,7 +86,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
             }
 
             // Remove the file after upload
-            fs.unlinkSync(filePath);
+            await fs.promises.unlink(filePath);
         }
 
         const data = {
@@ -101,7 +100,6 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
             RATINGS: rating
         };
 
-        console.log(data);
         const res = await Items.findOneAndUpdate(
             { _id: id },
             { $set: data },
@@ -109,10 +107,10 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
         );
 
         if (!res) {
-            throw new Error("User not found");
+            return NextResponse.json({ error: "Item not found" }, { status: 404 });
         }
 
-        return NextResponse.json({ message: "Profile updated successfully", data }, { status: 200 });
+        return NextResponse.json({ message: "Item updated successfully", data: res }, { status: 200 });
     } catch (e) {
         console.error(e);
         return NextResponse.json({ error: "Server error" }, { status: 500 });
@@ -127,14 +125,13 @@ export async function POST(request: NextRequest) {
         const discount = form.get('discount') as string;
         const price = form.get('price') as string;
         const discountedPrice = form.get('discountedPrice') as string;
-        const tags = form.get('tags') ;
-        const rating = form.get('rating') ;
+        const tags = form.get('tags')?.toString().split(',') || []; // Assuming tags are comma-separated
+        const rating = parseFloat(form.get('rating')?.toString() || '0');
         const file = form.get('image');
 
         let image: string | null = null;
 
         if (typeof file === 'string') {
-            // Check if the URL is from Cloudinary
             const isCloudinaryUrl = file.startsWith('https://res.cloudinary.com/');
             if (isCloudinaryUrl) {
                 image = file;
@@ -144,7 +141,7 @@ export async function POST(request: NextRequest) {
         } else if (file && file instanceof Blob) {
             const fileBuffer = Buffer.from(await file.arrayBuffer());
             const filePath = `public/uploads/${file.name}`;
-            fs.writeFileSync(filePath, fileBuffer);
+            await fs.promises.writeFile(filePath, fileBuffer);
 
             const uploader = async (path: string) => await uploadOnCloudinary(path);
             const avatarResponse = await uploader(filePath);
@@ -156,7 +153,7 @@ export async function POST(request: NextRequest) {
             }
 
             // Remove the file after upload
-            fs.unlinkSync(filePath);
+            await fs.promises.unlink(filePath);
         }
 
         const newItem = new Items({

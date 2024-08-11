@@ -71,6 +71,7 @@ export default function Productable() {
       });
       setData(response.data.data);
       setOldData(response.data.data);
+      console.log(data);
       setTotalPages(response.data.totalPages);
       setCurrentPage(response.data.currentPage);
     } catch (error) {
@@ -83,7 +84,7 @@ export default function Productable() {
     fetchData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+useEffect(()=>{console.log(data)},[data]);
   useEffect(() => {
     fetchData(
       currentPage,
@@ -329,7 +330,7 @@ export default function Productable() {
                 <TableCell className="tableCell">{row._id}</TableCell>
                 <TableCell className="tableCell">
                   <div className="cellWrapper">
-                    <Image src={row.CloudanaryImageId} alt="" className="image" />
+                    <img src={row.CloudanaryImageId} alt="" className="image" />
                     {row.FOODNAME}
                   </div>
                 </TableCell>
@@ -337,7 +338,7 @@ export default function Productable() {
                 <TableCell className="tableCell">{row.CUSSINE}</TableCell>
                 <TableCell className="tableCell">{row.PRICE}</TableCell>
                 <TableCell className="tableCell">{row.RATINGS}</TableCell>
-                <TableCell className="tableCell">{row.TAGS}</TableCell>
+                <TableCell className="tableCell">{row.TAGS.join(",")}</TableCell>
                 <TableCell className="tableCell">
                   <Link href={`/admin/foodproducts/${row._id}`}>
                     <span>VIEW</span>

@@ -20,7 +20,7 @@ import axios from "axios";
 import {useCart} from "@/context/MoviesFoodContext";
 import Image from "next/image";
 const TheaterBooking = () => {
-  const { adddata } = useCart();
+  const { adddata,setmoviedata ,cleardata} = useCart();
   const [Data,setdata] = useState([{
     "data": [
         {
@@ -61,6 +61,7 @@ const TheaterBooking = () => {
   const [formData, setFormData] = useState({
     bookingId: "",
     movieName: "",
+    movieId:"",
     dateTime: "",
     duration: "",
     theaterNumber: "",
@@ -278,6 +279,7 @@ const TheaterBooking = () => {
     const selectedMovie = Data.find((movie) => movie._id === id);
     setFormData((prevState) => ({
       ...prevState,
+      movieId:selectedMovie._id,
       movieName: selectedMovie.titleText,
       duration: `${Math.floor(selectedMovie.runtime / 3600)}h ${Math.floor(
         (selectedMovie.runtime % 3600) / 60
@@ -286,18 +288,19 @@ const TheaterBooking = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
     try{
     const data={
       additionalEquipment:formData.additionalEquipment,
       address:formData.address,
       contactNumber:formData.contactNumber,
-      customerName:formData.contactNumber,
+      customerName:formData.customerName,
       dateTime:formData.dateTime,
       duration:formData.duration,
       email:formData.email,
       movieName:formData.movieName,
+      movieId:formData.movieId,
       movieprice:formData.movieprice,
       notes:formData.notes,
       numberOfSeats:formData.numberOfSeats,
@@ -307,10 +310,10 @@ const TheaterBooking = () => {
       quantities:quantities,
       selectedRows:selectedRows
     }
+
     console.log(data);
-    const res=axios.post("/api/calculatemovieamount",data);
-    console.log(res);
-    adddata(res);
+    const res= await axios.post("/api/calculatemovieamount",data);
+    adddata(res.data.data);
     toast.success("Form submitted successfully!");
     // Handle form submission logic
     }

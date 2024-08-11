@@ -37,7 +37,7 @@ const data={
   "titleText":titleText,
   "titleType":titleType,
   "originalTitleText":originalTitleText,
-  "primaryImage":primaryImage,
+  "primaryImage":primaryImagePreview,
   "heros":movieherotags,
   "releaseYear":releaseYear,
   "ratingsSammary":ratingsSammary,
@@ -63,6 +63,7 @@ const data={
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
+      console.log(reader);
       reader.onload = () => {
         if (reader.readyState === 2 && typeof reader.result === "string") {
           setPrimaryImagePreview(reader.result);
@@ -70,6 +71,7 @@ const data={
       };
       reader.readAsDataURL(file);
       setPrimaryImage(file);
+      console.log(primaryImage);
     }
   };
 

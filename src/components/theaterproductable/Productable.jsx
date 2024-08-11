@@ -10,7 +10,6 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Link from "next/link"; // Correct import for Link
 import "./productable.scss";
-import Image from "next/image";
 export default function Productable() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -74,12 +73,12 @@ export default function Productable() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
+            {data && data.map((row) => (
               <TableRow key={row._id}>
                 <TableCell className="tableCell">{row._id}</TableCell>
                 <TableCell className="tableCell">
                   <div className="cellWrapper">
-                    <Image src={row.primaryImage} alt="" className="image" />
+                    <img src={row.primaryImage} alt="" className="image" />
                     {row.titleText}
                   </div>
                 </TableCell>

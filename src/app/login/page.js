@@ -171,7 +171,7 @@ export default function Page() {
               >
                 {Loading ? <span className="loading loading-bars loading-lg"></span> : "Submit"}
               </button>
-              <div className="flex flex-col md:flex-row justify-between text-xs text-center space-y-2 md:space-y-0 md:space-x-4">
+              <div className="flex flex-col  justify-between text-xs text-center space-y-2 md:space-y-0 md:space-x-4">
                 <div>
                   Not Exist?{" "}
                   <Link className="text-red-800" href="/Registration">

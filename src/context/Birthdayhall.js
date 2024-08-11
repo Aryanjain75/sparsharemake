@@ -2,25 +2,25 @@ import React, { createContext, useState, useContext, useEffect, ReactNode } from
 
 export const CartContext = createContext();
 
-export const Cartprovider = ({ children }) => {
-  const [moviedata, setmoviedata] = useState([]);
+export const Birthdayhall = ({ children }) => {
+  const [Birthdayhalldata, setBirthdayhalldata] = useState([]);
 
   const loaddata = () => {
-    const storedData = localStorage.getItem("MovieItems");
+    const storedData = localStorage.getItem("BirthdayhallItems");
     if (storedData) {
-      setmoviedata(JSON.parse(storedData));
+      setBirthdayhalldata(JSON.parse(storedData));
     }
   };
-  useEffect(()=>{console.log(moviedata)},[moviedata]);
+  useEffect(()=>{console.log(Birthdayhalldata)},[Birthdayhalldata]);
   const savedata = () => {
-    localStorage.setItem("MovieItems", JSON.stringify(moviedata));
+    localStorage.setItem("BirthdayhallItems", JSON.stringify(Birthdayhalldata));
   };
   function cleardata(){
-    localStorage.removeItem("cart");
-    setmoviedata([])
+    localStorage.removeItem("BirthdayhallItems");
+    setBirthdayhalldata([])
   }
   const adddata = (res) => {
-    setmoviedata((prevData) => {
+    setBirthdayhalldata((prevData) => {
       const newData = [...prevData, res];
       localStorage.setItem("MovieItems", JSON.stringify(newData));
       return newData;
@@ -28,7 +28,7 @@ export const Cartprovider = ({ children }) => {
   };
 
   const showdata = () => {
-    console.log(moviedata);
+    console.log(Birthdayhalldata);
   };
 
   useEffect(() => {
@@ -36,7 +36,7 @@ export const Cartprovider = ({ children }) => {
   }, []);
 
   return (
-    <CartContext.Provider value={{ moviedata, setmoviedata, showdata, savedata, loaddata, adddata ,cleardata}}>
+    <CartContext.Provider value={{ Birthdayhalldata, setBirthdayhalldata, showdata, savedata, loaddata, adddata ,cleardata}}>
       {children}
     </CartContext.Provider>
   );

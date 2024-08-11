@@ -101,7 +101,7 @@ const UpdateProfile = () => {
           <label className="block mb-1"> Avatar </label>
           <div className="mb-4 flex flex-col md:flex-row">
             <div className="flex items-center mb-4 space-x-3 mt-4 cursor-pointer md:w-1/5 lg:w-1/4">
-              <Image className="w-14 h-14 rounded-full" src={avatarPreview} alt="Avatar Preview" />
+              <img className="w-14 h-14 rounded-full" src={avatarPreview} alt="Avatar Preview" />
             </div>
             <div className="md:w-2/3 lg:w-80">
               <input

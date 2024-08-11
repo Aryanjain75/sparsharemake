@@ -7,7 +7,7 @@ import { DarkModeContextProvider } from "@/context/darkModeContext";
 import React,{useState,useEffect} from "react";
 import { ToastContainer } from "react-toastify";
 import { Cartprovider  } from '@/context/MoviesFoodContext';
-
+import { Birthdayhall  } from '@/context/Birthdayhall';
 export function GlobalProvider({ children }: { children: React.ReactNode }) {
   return <>
     <ToastContainer
@@ -23,6 +23,7 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
       theme="colored"
     />
         <DarkModeContextProvider>
+          <Birthdayhall>
       <UserProvider>
         <Cartprovider>
          <CartProvider>
@@ -32,6 +33,7 @@ export function GlobalProvider({ children }: { children: React.ReactNode }) {
         </CartProvider>
       </Cartprovider>
       </UserProvider>
+      </Birthdayhall>
       </DarkModeContextProvider>
 
   </>

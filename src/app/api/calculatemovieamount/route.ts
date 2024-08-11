@@ -30,6 +30,7 @@ interface data {
 }
 
 interface RequestBody {
+  movieId: any;
   quantities: any;
   movieprice: number;
   customerName: any;
@@ -145,6 +146,7 @@ export async function POST(request: NextRequest) {
     // Calculate total cost
     const totalCost = moviePrice + totalFoodCost;
     const billDetails = {
+      movieId:data.movieId,
       customerName: data.customerName,
       contactNumber: data.contactNumber,
       email: data.email,

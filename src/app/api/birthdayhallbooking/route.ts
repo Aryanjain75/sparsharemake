@@ -18,7 +18,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     if (!token) {
       return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
     }
-    const tokenString = token.value; // Convert the RequestCookie to a string
+    const tokenString = token.value; 
     const decoded = jwt.decode(tokenString) as JwtPayload;
     if (!decoded || !decoded.id) {
       return NextResponse.json({ message: "Invalid token" }, { status: 401 });

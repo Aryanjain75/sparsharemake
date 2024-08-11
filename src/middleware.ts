@@ -31,6 +31,7 @@ export async function middleware(request: NextRequest) {
       case '/admin/products':
         try {
           const userDetails = jwt.decode(token) as JwtPayload;
+          console.log(userDetails);
           if (!userDetails.isAdmin) {
           return NextResponse.redirect(new URL('/', request.nextUrl));
         }
