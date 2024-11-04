@@ -173,7 +173,7 @@ const data={
                 ))}
               </div>
               <div style={{ display: "flex", flexDirection: "row ", justifyContent: "space-evenly " }}>
-                <div>{runtime} seconds</div>
+                <div>{parseInt((runtime/60)/60)} hours {parseInt(runtime/60)%60} minutes{runtime%60} seconds</div>
                 <div>{releaseYear}</div>
               </div>
               <div style={{ transform: "translate3d(30px, 32px, 0px)" }}>

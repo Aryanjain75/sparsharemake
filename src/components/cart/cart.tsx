@@ -37,7 +37,7 @@ function Cart() {
         cart.cartItems.map((cartItem:any) => (
           <div key={cartItem._id} className="border-b border-gray-200 pb-4 mb-4">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div className="flex items-center w-full md:w-2/5 xl:w-2/4">
+              <div className="flex items-center w-full md:w-2/5 xl:w-2/4 relative">
                 <div className="flex-shrink-0 w-16 h-16 border border-gray-200 rounded overflow-hidden">
                   <Image src={cartItem.CloudanaryImageId} alt={cartItem.FOODNAME} layout="fill" objectFit="cover" />
                 </div>
