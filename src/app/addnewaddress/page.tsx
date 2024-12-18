@@ -5,7 +5,6 @@ import Sidebar from "@/components/profile/Sidebar";
 import { countries } from "countries-list";
 import { UsernameContext } from '@/context/UserContext';
 import axios from "axios";
-import { Router } from "lucide-react";
 import { useRouter } from "next/navigation";
 
 const NewAddress: React.FC = () => {

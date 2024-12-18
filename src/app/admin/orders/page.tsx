@@ -177,9 +177,9 @@ const List: React.FC = () => {
                   </span>
                 </TableCell>
                 <TableCell className="tableCell"><select name="status" id="">
-                  <label htmlFor="">Delivered</label>
-                  <label htmlFor="">Out for delivery</label>
-                  <label htmlFor="">processing...</label>
+                  <label htmlFor="Delivered">Delivered</label>
+                  <label htmlFor="Out for delivery">Out for delivery</label>
+                  <label htmlFor="processing...">processing...</label>
 
                   </select></TableCell>
 
